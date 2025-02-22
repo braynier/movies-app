@@ -1,3 +1,5 @@
-export const Logo = () => {
-	return <div>Logo</div>;
-};
+function Logo() {
+  return <div>Logo</div>;
+}
+
+export default Logo;
