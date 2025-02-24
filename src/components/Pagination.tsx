@@ -1,8 +1,4 @@
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (pageNumber: number) => void;
-}
+import { PaginationProps } from "../types/pagination";
 
 const Pagination = ({
   currentPage,
@@ -11,16 +7,33 @@ const Pagination = ({
 }: PaginationProps) => {
   const getPageNumbers = () => {
     const pages = [];
+    const maxVisiblePages = 5; // Maximum number of visible page numbers
+    const halfMaxVisiblePages = Math.floor(maxVisiblePages / 2);
 
-    for (let i = 1; i <= Math.min(5, totalPages); i++) {
-      pages.push(i);
+    pages.push(1);
+
+    let startPage = Math.max(2, currentPage - halfMaxVisiblePages);
+    let endPage = Math.min(totalPages - 1, currentPage + halfMaxVisiblePages);
+
+    if (currentPage <= halfMaxVisiblePages) {
+      endPage = Math.min(maxVisiblePages, totalPages - 1);
+    } else if (currentPage >= totalPages - halfMaxVisiblePages) {
+      startPage = Math.max(totalPages - maxVisiblePages + 1, 2);
     }
 
-    if (totalPages > 5) {
+    if (startPage > 2) {
       pages.push("...");
     }
 
-    if (totalPages > 5) {
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+
+    if (endPage < totalPages - 1) {
+      pages.push("...");
+    }
+
+    if (totalPages > 1) {
       pages.push(totalPages);
     }
 
@@ -28,25 +41,28 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-4">
+    <div className="mt-4 flex items-center justify-center gap-2">
       {getPageNumbers().map((page, index) =>
         page === "..." ? (
-          <span key={index} className="px-2 py-1">
+          <span
+            key={index}
+            className="px-2 py-1 text-neutral-700/75 dark:text-neutral-300"
+          >
             ...
           </span>
         ) : (
           <button
             key={index}
             onClick={() => onPageChange(page as number)}
-            className={`px-3 py-1 rounded-lg ${
+            className={`rounded-lg px-3 py-1 hover:cursor-pointer ${
               currentPage === page
-                ? "bg-blue-500 text-white"
+                ? "bg-green-500 text-white"
                 : "bg-gray-200 hover:bg-gray-300"
             }`}
           >
             {page}
           </button>
-        )
+        ),
       )}
     </div>
   );

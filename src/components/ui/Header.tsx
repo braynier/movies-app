@@ -4,15 +4,13 @@ import NavLinks from "./NavLinks";
 
 export default function Header() {
   return (
-    <header className="mb-6">
-      <nav className="flex justify-between">
-        <div className="flex gap-1">
-          <Logo />
-          <ThemeToggle />
-        </div>
+    <header className="py-10 px-3 max-w-7xl mx-auto flex justify-between">
+      <div className="flex items-center gap-3">
+        <Logo />
+        <ThemeToggle />
+      </div>
 
-        <NavLinks />
-      </nav>
+      <NavLinks />
     </header>
   );
 }

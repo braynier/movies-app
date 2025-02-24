@@ -69,4 +69,7 @@ export interface MovieItemProps {
 export interface MoviesListProps {
   movies: Movie[];
   itemsPerPage?: number;
+  enableSorting?: boolean;
+  enableGenreFilter?: boolean;
+  enableStatusFilter?: boolean;
 }

@@ -5,10 +5,10 @@ function Favorites() {
   const { favorites } = useFavoritesStore();
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Favorites</h1>
+    <section className="p-4">
+      {favorites.length === 0 && "No favorites"}
       <MovieList movies={favorites} />
-    </div>
+    </section>
   );
 }
 

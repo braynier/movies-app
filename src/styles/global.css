@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-poppins: "Poppins", "sans-serif";
+  --color-main-light: #f4f4f4;
+  --color-main-dark: #1c1b21;
+}
+
 body {
-  @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  @apply font-poppins bg-main-light dark:bg-main-dark;
 }
 
 .loader {

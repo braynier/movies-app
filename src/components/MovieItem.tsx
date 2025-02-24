@@ -1,12 +1,8 @@
-import { Movie } from "../types/movie";
+import { MovieItemProps } from "../types/movie";
 import { Link } from "react-router-dom";
 import { removeHtmlTags } from "./utils/removeHtmlTags";
 import { useFavoritesStore } from "../stores/favoritesStore";
-
-interface MovieItemProps {
-  movie: Movie;
-  summaryLength?: number;
-}
+import { FaRegHeart } from "react-icons/fa";
 
 const MovieItem = ({ movie, summaryLength }: MovieItemProps) => {
   const { favorites, addFavorite, removeFavorite } = useFavoritesStore();
@@ -17,7 +13,7 @@ const MovieItem = ({ movie, summaryLength }: MovieItemProps) => {
   if (summaryLength && formattedMovieSummary.length > summaryLength) {
     formattedMovieSummary = `${formattedMovieSummary.substring(
       0,
-      summaryLength
+      summaryLength,
     )}...`;
   }
 
@@ -33,34 +29,50 @@ const MovieItem = ({ movie, summaryLength }: MovieItemProps) => {
   };
 
   return (
-    <Link to={`/movies/${movie.id}`} className="block">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+    <Link
+      to={`/movies/${movie.id}`}
+      className="transition-all duration-200 hover:shadow-sm hover:shadow-gray-500/50"
+    >
+      <div className="flex">
         <img
           src={movie.image.medium}
           alt={movie.name}
-          className="w-full h-48 object-cover"
+          className="h-full w-full object-cover"
         />
-        <div className="p-4">
-          <h2 className="text-xl font-bold mb-2">{movie.name}</h2>
-          <p className="text-gray-600 mb-2">{formattedMovieSummary}</p>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-yellow-500">
-              ⭐ {movie.rating.average || "N/A"}
-            </span>
-            <span className="text-gray-500">{movie.genres.join(", ")}</span>
+        <div className="flex flex-col justify-between pt-3 pl-2">
+          <div>
+            <h2 className="mb-5 text-2xl font-semibold text-black/80 dark:text-neutral-200">
+              {movie.name}
+            </h2>
+            <p className="leading-normal font-normal tracking-tighter text-neutral-700/75 dark:text-neutral-300">
+              {formattedMovieSummary}
+            </p>
           </div>
 
-          <button
-            onClick={handleFavoriteClick}
-            className={`w-full py-2 rounded-lg ${
-              isFavorite
-                ? "bg-red-500 text-white hover:bg-red-600"
-                : "bg-blue-500 text-white hover:bg-blue-600"
-            }`}
-          >
-            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-          </button>
+          <div className="flex items-end justify-between">
+            <div className="flex flex-col items-center">
+              <span className="text-[10px] tracking-tighter text-neutral-600/40 dark:text-neutral-400/80">
+                Rating
+              </span>
+              <span className="text-[11px] tracking-tighter text-neutral-600/40 dark:text-neutral-400/80">
+                {movie.rating.average || "N/A"} / 10
+              </span>
+            </div>
+
+            <span className="text-[11px] font-medium tracking-tighter text-neutral-500/75 dark:text-neutral-400/30">
+              {movie.genres.join(", ")}
+            </span>
+          </div>
         </div>
+
+        <button
+          onClick={handleFavoriteClick}
+          className={`h-fit rounded-full p-2 transition-colors hover:cursor-pointer ${
+            isFavorite ? "text-green-500" : "text-gray-600"
+          }`}
+        >
+          <FaRegHeart />
+        </button>
       </div>
     </Link>
   );
