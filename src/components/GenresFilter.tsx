@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import useOutsideClick from "../hooks/useoutsideClick";
+import useOutsideClick from "../hooks/useOutsideClick";
 
 interface GenresFilterProps {
   genres: string[];

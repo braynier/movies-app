@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import useOutsideClick from "../hooks/useoutsideClick";
+import useOutsideClick from "../hooks/useOutsideClick";
 import { StatusFilterProps } from "../types/filter";
 
 const StatusFilter = ({
