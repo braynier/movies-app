@@ -24,7 +24,7 @@ const MoviesList = ({
     filterMovies,
   } = useFilter();
 
-  // Apply sorting and filtering
+  // Conditionally apply filtering, sorting based on props
   const sortedMovies = enableSorting ? sortMovies(movies) : movies;
   const filteredMovies = filterMovies(sortedMovies);
 
@@ -36,14 +36,13 @@ const MoviesList = ({
 
   const displayedMovies = itemsPerPage ? currentItems : filteredMovies;
 
-  // Extract unique genres for the genre filter
   const genres = enableGenreFilter
     ? Array.from(new Set(movies.flatMap((movie) => movie.genres)))
     : [];
 
   return (
     <div>
-      {/* Render sorting and filtering components */}
+      {/* Conditionally render sorting and filtering components */}
       <div className="mb-10 flex flex-col gap-4 sm:flex-row">
         {enableSorting && (
           <Sort sortOption={sortOption} setSortOption={setSortOption} />
@@ -63,14 +62,12 @@ const MoviesList = ({
         )}
       </div>
 
-      {/* Movie grid */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {displayedMovies.map((movie) => (
           <MovieItem key={movie.id} movie={movie} summaryLength={100} />
         ))}
       </div>
 
-      {/* Pagination */}
       {itemsPerPage && (
         <Pagination
           currentPage={currentPage}

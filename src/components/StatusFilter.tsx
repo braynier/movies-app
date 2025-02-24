@@ -14,11 +14,10 @@ const StatusFilter = ({
     setSelectedStatus(selectedStatus === status ? "" : status);
   };
 
-  // Close dropdown when clicking outside
   useOutsideClick(dropdownRef, () => setIsOpen(false));
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative w-fit" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`rounded-xl bg-neutral-300 px-5 py-2 text-[14px] text-neutral-700/75 transition-all duration-300 hover:cursor-pointer hover:bg-neutral-300/70 dark:bg-gray-600/30 dark:text-neutral-300 dark:hover:bg-gray-600 ${selectedStatus && selectedStatus !== "All" ? "ring-3 ring-neutral-400/80" : ""}`}
@@ -28,7 +27,7 @@ const StatusFilter = ({
 
       {/* Dropdown list div */}
       {isOpen && (
-        <div className="bg-main-light dark:bg-main-dark absolute left-1/2 z-10 mt-5 w-48 -translate-x-1/2 rounded-lg border border-gray-200 shadow-lg">
+        <div className="bg-main-light dark:bg-main-dark absolute z-10 mt-5 w-48 rounded-lg border border-gray-200 shadow-lg sm:left-1/2 sm:-translate-x-1/2">
           <div className="p-2">
             {statusOptions.map((status) => (
               <label

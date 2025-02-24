@@ -1,5 +1,4 @@
-export interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (pageNumber: number) => void;
+export interface UsePaginationProps<T> {
+  itemsPerPage: number;
+  data: T[];
 }

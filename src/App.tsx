@@ -3,7 +3,7 @@ import AppLayout from "./components/ui/AppLayout";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import MovieDetails from "./pages/MovieDetails";
-import Error from "./components/Error";
+import Error from "./components/ui/Error";
 import { moviesLoader } from "./loaders/moviesLoader";
 
 const router = createBrowserRouter([

@@ -7,7 +7,7 @@ const Pagination = ({
 }: PaginationProps) => {
   const getPageNumbers = () => {
     const pages = [];
-    const maxVisiblePages = 5; // Maximum number of visible page numbers
+    const maxVisiblePages = 5;
     const halfMaxVisiblePages = Math.floor(maxVisiblePages / 2);
 
     pages.push(1);

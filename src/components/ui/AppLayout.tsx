@@ -1,4 +1,4 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 // import Loader from "./Loader";
@@ -8,17 +8,18 @@ function AppLayout() {
   // const isLoading = navigation.state === "loading";
 
   return (
-    <div>
+    <>
+      {/* A cool loader, since we have access to isLoading from react Router */}
       {/* {isLoading && <Loader />} */}
 
       <Header />
 
-      <main className="max-w-7xl mx-auto px-3">
+      <main className="mx-auto max-w-7xl px-3">
         <Outlet />
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }
 

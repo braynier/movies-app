@@ -1,10 +1,6 @@
-import { Movie } from "../types/movie";
+import { MovieItemDetailedProps } from "../types/movie";
 import { removeHtmlTags } from "./utils/removeHtmlTags";
 import { useFavoritesStore } from "../stores/favoritesStore";
-
-interface MovieItemDetailedProps {
-  movie: Movie;
-}
 
 const MovieItemDetailed = ({ movie }: MovieItemDetailedProps) => {
   const { favorites, addFavorite, removeFavorite } = useFavoritesStore();

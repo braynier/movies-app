@@ -17,7 +17,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="bg-main-dark/85 relative h-6 w-12 rounded-full transition-colors dark:bg-neutral-700/90"
+      className="bg-main-dark/85 relative h-6 w-12 rounded-full transition-colors hover:cursor-pointer dark:bg-neutral-700/90"
     >
       <div
         className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 transform rounded-full bg-green-500 transition-all duration-300 ${

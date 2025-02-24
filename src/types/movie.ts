@@ -66,6 +66,10 @@ export interface MovieItemProps {
   summaryLength?: number;
 }
 
+export interface MovieItemDetailedProps {
+  movie: Movie;
+}
+
 export interface MoviesListProps {
   movies: Movie[];
   itemsPerPage?: number;

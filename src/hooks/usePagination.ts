@@ -1,9 +1,5 @@
 import { useState } from "react";
-
-interface UsePaginationProps<T> {
-  itemsPerPage: number;
-  data: T[];
-}
+import { UsePaginationProps } from "../types/pagination";
 
 const usePagination = <T>({ itemsPerPage, data }: UsePaginationProps<T>) => {
   const [currentPage, setCurrentPage] = useState(1);
