@@ -33,14 +33,14 @@ const MovieItem = ({ movie, summaryLength }: MovieItemProps) => {
       to={`/movies/${movie.id}`}
       className="transition-all duration-200 hover:shadow-sm hover:shadow-gray-500/50"
     >
-      <div className="flex">
+      <div className="flex flex-col sm:flex-row">
         <img
           src={movie.image.medium}
           alt={movie.name}
           className="h-full w-full object-cover"
         />
         <div className="flex flex-col justify-between pt-3 pl-2">
-          <div>
+          <div className="mb-2 sm:mb-0">
             <h2 className="mb-5 text-2xl font-semibold text-black/80 dark:text-neutral-200">
               {movie.name}
             </h2>
@@ -67,11 +67,11 @@ const MovieItem = ({ movie, summaryLength }: MovieItemProps) => {
 
         <button
           onClick={handleFavoriteClick}
-          className={`h-fit rounded-full p-2 transition-colors hover:cursor-pointer ${
+          className={`h-fit self-end rounded-full p-2 transition-colors hover:cursor-pointer sm:self-auto ${
             isFavorite ? "text-green-500" : "text-gray-600"
           }`}
         >
-          <FaRegHeart />
+          <FaRegHeart className="text-2xl" />
         </button>
       </div>
     </Link>
