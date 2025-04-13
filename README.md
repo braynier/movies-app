@@ -21,7 +21,7 @@ npm install
 
 ## Overview
 
-Adhering to the task, and the **sole** given API endpoint, pagination, filtering, sorting was done purely **client-side**.
+Pagination, filtering, sorting was done purely **client-side**.
 
 Pagination, sorting, filtering logic is encapsulated, using react hooks making it reusable pieces of logic that can be applied in multiple places of the app.
 
